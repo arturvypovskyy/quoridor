@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7578F56B270F0A98007FA9E1 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578F56A270F0A98007FA9E1 /* BoardView.swift */; };
+		7578F573270F6ADF007FA9E1 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578F572270F6ADF007FA9E1 /* Pawn.swift */; };
+		7578F575270F6B5E007FA9E1 /* QuoridorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578F574270F6B5E007FA9E1 /* QuoridorEngine.swift */; };
 		75D5B258270DEB08006D3EB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5B257270DEB08006D3EB4 /* AppDelegate.swift */; };
 		75D5B25A270DEB08006D3EB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5B259270DEB08006D3EB4 /* SceneDelegate.swift */; };
 		75D5B25C270DEB08006D3EB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D5B25B270DEB08006D3EB4 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		7578F56A270F0A98007FA9E1 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		7578F572270F6ADF007FA9E1 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		7578F574270F6B5E007FA9E1 /* QuoridorEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoridorEngine.swift; sourceTree = "<group>"; };
 		75D5B254270DEB08006D3EB4 /* Quoridor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quoridor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D5B257270DEB08006D3EB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75D5B259270DEB08006D3EB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				75D5B259270DEB08006D3EB4 /* SceneDelegate.swift */,
 				75D5B25B270DEB08006D3EB4 /* ViewController.swift */,
 				7578F56A270F0A98007FA9E1 /* BoardView.swift */,
+				7578F572270F6ADF007FA9E1 /* Pawn.swift */,
+				7578F574270F6B5E007FA9E1 /* QuoridorEngine.swift */,
 				75D5B25D270DEB08006D3EB4 /* Main.storyboard */,
 				75D5B260270DEB0A006D3EB4 /* Assets.xcassets */,
 				75D5B262270DEB0A006D3EB4 /* LaunchScreen.storyboard */,
@@ -141,9 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7578F575270F6B5E007FA9E1 /* QuoridorEngine.swift in Sources */,
 				75D5B25C270DEB08006D3EB4 /* ViewController.swift in Sources */,
 				7578F56B270F0A98007FA9E1 /* BoardView.swift in Sources */,
 				75D5B258270DEB08006D3EB4 /* AppDelegate.swift in Sources */,
+				7578F573270F6ADF007FA9E1 /* Pawn.swift in Sources */,
 				75D5B25A270DEB08006D3EB4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,8 @@ class BoardView: UIView {
     var cellSide: CGFloat = 15
     let space: CGFloat = 20
     
+    var shadowPiece = Set<Pawn>()
+    
 
     
     override func draw(_ rect: CGRect) {
@@ -43,10 +45,9 @@ class BoardView: UIView {
     }
     
     func drawPieces(){
-        let pawnFirstPlayerImage = UIImage(named: "Pawn-white")
-        pawnFirstPlayerImage?.draw(in: CGRect(x: originX + (space + cellSide) * 4 , y: originY + (space + cellSide) * 8, width: cellSide, height: cellSide))
-        let pawnSecondPlayerImage = UIImage(named: "Pawn-black")
-        pawnSecondPlayerImage?.draw(in: CGRect(x: originX + (space + cellSide) * 4 , y: originY, width: cellSide, height: cellSide))
+        for piece in shadowPiece{
+            let pawnImage = UIImage(named: piece.imageName)
+            pawnImage?.draw(in: CGRect(x: originX + (space + cellSide) * CGFloat(piece.col) , y: originY + (space + cellSide) * CGFloat(piece.row), width: cellSide, height: cellSide))}
     }
 
 }

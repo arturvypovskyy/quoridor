@@ -9,6 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var quoridorEngine = QuoridorEngine()
+    
+    @IBOutlet weak var boardView: BoardView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        quoridorEngine.initializerGame()
+        boardView.shadowPiece = quoridorEngine.pawns
+        
+    }
     
     
     
