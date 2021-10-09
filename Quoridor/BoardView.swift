@@ -50,6 +50,9 @@ class BoardView: UIView {
     }
     
     
+
+    
+    
     func drawBoard(){
         for column in 0..<9{
             for row in 0..<9{
