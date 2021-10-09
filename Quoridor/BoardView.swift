@@ -16,7 +16,7 @@ class BoardView: UIView {
     var cellSide: CGFloat = 15
     let space: CGFloat = 20
     
-    var shadowPiece = Set<Pawn>()
+    var shadowPieces = Set<Pawn>()
     
 
     
@@ -29,6 +29,26 @@ class BoardView: UIView {
         drawPieces()
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let first = touches.first!
+        let fingerLocation = first.location(in: self)
+        
+        let fromCol: Int = Int((fingerLocation.x - originX)/(cellSide + space))
+        let fromRow: Int = Int((fingerLocation.y - originY)/(cellSide + space))
+        
+        print("from col: \(fromCol), row: \(fromRow)")
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let first = touches.first!
+        let fingerLocation = first.location(in: self)
+        
+        let toCol: Int = Int((fingerLocation.x - originX)/(cellSide + space))
+        let toRow: Int = Int((fingerLocation.y - originY)/(cellSide + space))
+        
+        print("to col: \(toCol), row: \(toRow)")
+    }
+    
     
     func drawBoard(){
         for column in 0..<9{
@@ -45,7 +65,7 @@ class BoardView: UIView {
     }
     
     func drawPieces(){
-        for piece in shadowPiece{
+        for piece in shadowPieces{
             let pawnImage = UIImage(named: piece.imageName)
             pawnImage?.draw(in: CGRect(x: originX + (space + cellSide) * CGFloat(piece.col) , y: originY + (space + cellSide) * CGFloat(piece.row), width: cellSide, height: cellSide))}
     }
