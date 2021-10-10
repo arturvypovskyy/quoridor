@@ -15,8 +15,12 @@ class BoardView: UIView {
     var originY: CGFloat = 15
     var cellSide: CGFloat = 15
     let space: CGFloat = 20
+    var fromRow = -10
+    var fromCol = -10
     
     var shadowPieces = Set<Pawn>()
+    
+    var quoridorDelegate: QuoridorDelegate? = nil
     
 
     
@@ -34,10 +38,9 @@ class BoardView: UIView {
         let first = touches.first!
         let fingerLocation = first.location(in: self)
         
-        let fromCol: Int = Int((fingerLocation.x - originX)/(cellSide + space))
-        let fromRow: Int = Int((fingerLocation.y - originY)/(cellSide + space))
+        fromCol = Int((fingerLocation.x - originX)/(cellSide + space))
+        fromRow = Int((fingerLocation.y - originY)/(cellSide + space))
         
-        print("from col: \(fromCol), row: \(fromRow)")
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let first = touches.first!
@@ -46,7 +49,7 @@ class BoardView: UIView {
         let toCol: Int = Int((fingerLocation.x - originX)/(cellSide + space))
         let toRow: Int = Int((fingerLocation.y - originY)/(cellSide + space))
         
-        print("to col: \(toCol), row: \(toRow)")
+        quoridorDelegate?.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
     }
     
     

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, QuoridorDelegate {
+    
     var quoridorEngine = QuoridorEngine()
     
     @IBOutlet weak var boardView: BoardView!
@@ -16,10 +17,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        boardView.quoridorDelegate = self
+        
         quoridorEngine.initializerGame()
         boardView.shadowPieces = quoridorEngine.pawns
         
+        
     }
+    
+    func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
+        
+        quoridorEngine.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
+        boardView.shadowPieces = quoridorEngine.pawns
+        boardView.setNeedsDisplay()
+    }
+
     
     
     
