@@ -21,10 +21,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWv-jB-b5s" customClass="BoardView" customModule="Quoridor" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="984" height="984"/>
+                                <rect key="frame" x="20" y="20" width="984" height="1312"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="AWv-jB-b5s" secondAttribute="height" multiplier="1:1" id="26J-OG-GO7"/>
+                                    <constraint firstAttribute="width" secondItem="AWv-jB-b5s" secondAttribute="height" multiplier="3:4" id="26J-OG-GO7"/>
                                 </constraints>
                             </view>
                         </subviews>

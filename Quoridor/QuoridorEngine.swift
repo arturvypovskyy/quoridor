@@ -11,6 +11,7 @@ import Foundation
 struct QuoridorEngine{
     
     var pawns = Set<Pawn>()
+    var walls = Set<Wall>()
     
     mutating func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int){
         guard var pieceMoved = pieceAt(col: fromCol, row: fromRow) else { return  }
@@ -34,6 +35,7 @@ struct QuoridorEngine{
         pawns.removeAll()
         pawns.insert(Pawn(col: 4, row: 0, imageName: "Pawn-black"))
         pawns.insert(Pawn(col: 4, row: 8, imageName: "Pawn-white"))
+
     }
     
     
