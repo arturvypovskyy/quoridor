@@ -90,13 +90,13 @@ class BoardView: UIView {
     }
     
     func drawWalls(){
-        let horizontalWallImage = UIBezierPath(rect: CGRect(x: originX + 4 * (space + cellSide), y: originY + 10 * (space + cellSide), width: 2 * cellSide + space, height: space) )
-        UIColor.orange.setFill()
-        horizontalWallImage.fill()
-        
-        let verticalWallImage = UIBezierPath(rect: CGRect(x: originX + 3 * (space + cellSide) + (cellSide - space)/2, y: originY + 10 * (space + cellSide) - cellSide, width: space , height: 2 * cellSide + space))
-        UIColor.orange.setFill()
-        verticalWallImage.fill()
+    let horizontalWallImage = UIBezierPath(rect: CGRect(x: originX + 4 * (space + cellSide), y: originY + 10 * (space + cellSide), width: 2 * cellSide + space, height: space) )
+    UIColor.orange.setFill()
+    horizontalWallImage.fill()
+    
+    let verticalWallImage = UIBezierPath(rect: CGRect(x: originX + 3 * (space + cellSide) + (cellSide - space)/2, y: originY + 10 * (space + cellSide) - cellSide, width: space , height: 2 * cellSide + space))
+    UIColor.orange.setFill()
+    verticalWallImage.fill()
         
     }
 
