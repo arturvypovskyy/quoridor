@@ -21,6 +21,7 @@ class ViewController: UIViewController, QuoridorDelegate {
         
         quoridorEngine.initializerGame()
         boardView.shadowPieces = quoridorEngine.pawns
+        boardView.shadowWalls = quoridorEngine.walls
         
         
     }

@@ -19,7 +19,11 @@ class BoardView: UIView {
     var fromCol = -10
     var touchNumber = 0
     
+    
+    var type: String = ""
+    
     var shadowPieces = Set<Pawn>()
+    var shadowWalls = Set<Wall>()
 
     
     var quoridorDelegate: QuoridorDelegate? = nil
@@ -38,13 +42,27 @@ class BoardView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touchNumber < 1{
+        if touchNumber == 0{
             let first = touches.first!
             let fingerLocation = first.location(in: self)
             fromCol = Int((fingerLocation.x - originX)/(cellSide + space))
             fromRow = Int((fingerLocation.y - originY)/(cellSide + space))
-        
-            touchNumber += 1}
+            if (fromRow > 8){
+                if(fingerLocation.x > originX + 4 * (space + cellSide) && fingerLocation.x < originX + 4 * (space + cellSide) + space + 2 * cellSide) && (fingerLocation.y > originY + 10 * (space + cellSide) && fingerLocation.y < originY + 10 * (space + cellSide) + space){
+                    type = "horizontal"
+                    print("Horizontal picked")
+                }
+            
+                else if(fingerLocation.x > originX + 3 * (space + cellSide) + (cellSide - space)/2 && fingerLocation.x < originX + 3 * (space + cellSide) + (cellSide - space)/2 + space) && (fingerLocation.y > originY + 10 * (space + cellSide) - cellSide && fingerLocation.y < originY + 10 * (space + cellSide) - cellSide + 2 * cellSide + space){
+                    type = "vertical"
+                    print("Vertical picked")
+                }
+                touchNumber = 0
+            }
+            else{
+                touchNumber += 1
+            }
+        }
         else{
             let first = touches.first!
             let fingerLocation = first.location(in: self)
@@ -54,23 +72,26 @@ class BoardView: UIView {
             if (toRow < 9 && toCol < 9 ){
                 quoridorDelegate?.movePiece(fromCol: fromCol, fromRow: fromRow, toCol: toCol, toRow: toRow)
             }
-            else{
-                
-                if(fingerLocation.x > originX + 4 * (space + cellSide) && fingerLocation.x < originX + 4 * (space + cellSide) + space + 2 * cellSide) && (fingerLocation.y > originY + 10 * (space + cellSide) && fingerLocation.y < originY + 10 * (space + cellSide) + space){
-                    print("Horizontal picked")
-                    }
-                
-                else if(fingerLocation.x > originX + 3 * (space + cellSide) + (cellSide - space)/2 && fingerLocation.x < originX + 3 * (space + cellSide) + (cellSide - space)/2 + space) && (fingerLocation.y > originY + 10 * (space + cellSide) - cellSide && fingerLocation.y < originY + 10 * (space + cellSide) - cellSide + 2 * cellSide + space){
-                    print("Vertical picked")
-                    }
-            }
             
             touchNumber = 0
         }
            
        }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("smth was dagged")
+        let first = touches.first!
+        let fingerLocation = first.location(in: self)
+        let toColWall = Int((fingerLocation.x - originX) / (cellSide + space))
+        let toRowWall = Int((fingerLocation.y - originY) / (cellSide + space))
+        if type == "horizontal"{
+            print("horizontal to col: \(toColWall), to row: \(toRowWall)")
+        }
+        else if type == "vertical"{
+            print("vertical to col: \(toColWall), to row: \(toRowWall)")
+            
+        }
+        
+        type = ""
+    
     }
     
     
