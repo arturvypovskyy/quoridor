@@ -8,7 +8,7 @@
 
 import Foundation
 struct Wall: Hashable{
-    var orientation: String
-    var wallCol: Int
-    var wallRow: Int
+    var type: String
+    var col: Int
+    var row: Int
 }

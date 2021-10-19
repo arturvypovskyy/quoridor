@@ -32,6 +32,12 @@ class ViewController: UIViewController, QuoridorDelegate {
         boardView.shadowPieces = quoridorEngine.pawns
         boardView.setNeedsDisplay()
     }
+    
+    func setWall(type: String, toCol: Int, toRow: Int){
+        quoridorEngine.setWall(type: type, toCol: toCol, toRow: toRow)
+        boardView.shadowWalls = quoridorEngine.walls
+        boardView.setNeedsDisplay()
+    }
 
     
     

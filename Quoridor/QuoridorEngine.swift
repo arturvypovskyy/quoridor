@@ -30,11 +30,50 @@ struct QuoridorEngine{
         }
         return nil
     }
+    
+    mutating func setWall(type:String, toCol: Int, toRow: Int){
+        if (toRow < 9 && toCol < 9){
+            if !(walls.isEmpty){
+                var candidates = Set<Wall>()
+                
+                if type == "vertical"{
+                    candidates.insert(Wall(type: "vertical", col: toCol, row: toRow))
+                    candidates.insert(Wall(type: "vertical", col: toCol, row: toRow - 1))
+                    candidates.insert(Wall(type: "vertical", col: toCol, row: toRow + 1))
+                    candidates.insert(Wall(type: "horizontal", col: toCol, row: toRow))
+                    
+                }
+                else{
+                    candidates.insert(Wall(type: "horizontal", col: toCol, row: toRow))
+                    candidates.insert(Wall(type: "horizontal", col: toCol - 1, row: toRow))
+                    candidates.insert(Wall(type: "horizontal", col: toCol + 1, row: toRow))
+                    candidates.insert(Wall(type: "vertical", col: toCol, row: toRow))
+                }
+                
+                
+                if (!(walls.isDisjoint(with: candidates))){
+                    print("Same found")
+                }
+                else{
+                    let wallSet = Wall(type: type, col: toCol, row: toRow)
+                    walls.insert(wallSet)
+                }
+            }
+            else{
+                let wallSet = Wall(type: type, col: toCol, row: toRow)
+                walls.insert(wallSet)
+            }
+        }
+    }
         
     mutating func initializerGame(){
         pawns.removeAll()
+        walls.removeAll()
+        
         pawns.insert(Pawn(col: 4, row: 0, imageName: "Pawn-black"))
         pawns.insert(Pawn(col: 4, row: 8, imageName: "Pawn-white"))
+        
+        
 
     }
     

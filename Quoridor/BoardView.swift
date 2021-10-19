@@ -82,6 +82,7 @@ class BoardView: UIView {
         let fingerLocation = first.location(in: self)
         let toColWall = Int((fingerLocation.x - originX) / (cellSide + space))
         let toRowWall = Int((fingerLocation.y - originY) / (cellSide + space))
+        
         if type == "horizontal"{
             print("horizontal to col: \(toColWall), to row: \(toRowWall)")
         }
@@ -89,6 +90,8 @@ class BoardView: UIView {
             print("vertical to col: \(toColWall), to row: \(toRowWall)")
             
         }
+        
+        quoridorDelegate?.setWall(type: type, toCol: toColWall, toRow: toRowWall)
         
         type = ""
     
@@ -119,13 +122,29 @@ class BoardView: UIView {
     }
     
     func drawWalls(){
-    let horizontalWallImage = UIBezierPath(rect: CGRect(x: originX + 4 * (space + cellSide), y: originY + 10 * (space + cellSide), width: 2 * cellSide + space, height: space) )
-    UIColor.orange.setFill()
-    horizontalWallImage.fill()
+        let horizontalWallImage = UIBezierPath(rect: CGRect(x: originX + 4 * (space + cellSide), y: originY + 10 * (space + cellSide), width: 2 * cellSide + space, height: space) )
+        UIColor.orange.setFill()
+        horizontalWallImage.fill()
+
+        let verticalWallImage = UIBezierPath(rect: CGRect(x: originX + 3 * (space + cellSide) + (cellSide - space)/2, y: originY + 10 * (space + cellSide) - cellSide, width: space , height: 2 * cellSide + space))
+        UIColor.orange.setFill()
+        verticalWallImage.fill()
+        
+        for wall in shadowWalls{
+            if wall.type == "horizontal"{
+                let horizontalWallImage = UIBezierPath(rect: CGRect(x: originX + CGFloat(wall.col) * (space + cellSide), y: originY + CGFloat(wall.row) * (space + cellSide) + cellSide, width: 2 * cellSide + space, height: space) )
+                UIColor.orange.setFill()
+                horizontalWallImage.fill()
+                
+            }
+            else if wall.type == "vertical"{
+                let verticalWallImage = UIBezierPath(rect: CGRect(x: originX + CGFloat(wall.col) * (space + cellSide) + cellSide, y: originY + CGFloat(wall.row) * (space + cellSide), width: space , height: 2 * cellSide + space))
+                UIColor.orange.setFill()
+                verticalWallImage.fill()
+            }
+            
+        }
     
-    let verticalWallImage = UIBezierPath(rect: CGRect(x: originX + 3 * (space + cellSide) + (cellSide - space)/2, y: originY + 10 * (space + cellSide) - cellSide, width: space , height: 2 * cellSide + space))
-    UIColor.orange.setFill()
-    verticalWallImage.fill()
         
     }
 

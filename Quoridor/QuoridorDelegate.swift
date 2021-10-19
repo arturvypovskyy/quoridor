@@ -9,4 +9,7 @@
 import Foundation
 protocol QuoridorDelegate{
     func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int)
+    
+    func setWall(type: String, toCol: Int, toRow: Int)
 }
+
