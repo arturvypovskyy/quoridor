@@ -15,11 +15,27 @@ struct QuoridorEngine{
     
     mutating func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int){
         guard var pieceMoved = pieceAt(col: fromCol, row: fromRow) else { return  }
-        pawns.remove(pieceMoved)
+        var possibleMoves = Set<Pawn>()
+        possibleMoves.insert(Pawn(col: fromCol + 1, row: fromRow, imageName: pieceMoved.imageName))
+        possibleMoves.insert(Pawn(col: fromCol - 1, row: fromRow, imageName: pieceMoved.imageName))
+        possibleMoves.insert(Pawn(col: fromCol, row: fromRow + 1, imageName: pieceMoved.imageName))
+        possibleMoves.insert(Pawn(col: fromCol, row: fromRow - 1, imageName: pieceMoved.imageName))
         pieceMoved.col = toCol
         pieceMoved.row = toRow
-        pawns.insert(pieceMoved)
-        
+
+        if (possibleMoves.contains(pieceMoved)){
+            
+            pieceMoved.col = fromCol
+            pieceMoved.row = fromRow
+            pawns.remove(pieceMoved)
+            pieceMoved.col = toCol
+            pieceMoved.row = toRow
+            pawns.insert(pieceMoved)
+        }
+        else{
+            print("Move is forbidden")
+        }
+
     }
     
     func pieceAt(col: Int, row: Int) -> Pawn?{
