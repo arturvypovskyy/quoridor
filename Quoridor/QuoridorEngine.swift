@@ -32,7 +32,7 @@ struct QuoridorEngine{
     }
     
     mutating func setWall(type:String, toCol: Int, toRow: Int){
-        if (toRow < 9 && toCol < 9){
+        if (toRow >= 0 && toRow < 8 && toCol < 8 && toCol >= 0){
             if !(walls.isEmpty){
                 var candidates = Set<Wall>()
                 
