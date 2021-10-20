@@ -22,6 +22,20 @@ struct QuoridorEngine{
         possibleMoves.insert(Pawn(col: fromCol, row: fromRow - 1, imageName: pieceMoved.imageName))
         pieceMoved.col = toCol
         pieceMoved.row = toRow
+        
+        if walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow)) || walls.contains(Wall(type: "horizontal", col: fromCol - 1, row: fromRow)){
+            possibleMoves.remove(Pawn(col: fromCol, row: fromRow + 1, imageName: pieceMoved.imageName))
+        }
+        if walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow - 1)) || walls.contains(Wall(type: "horizontal", col: fromCol - 1, row: fromRow - 1)) {
+            possibleMoves.remove(Pawn(col: fromCol,row: fromRow - 1 , imageName: pieceMoved.imageName))
+        }
+        if walls.contains(Wall(type: "vertical", col: fromCol, row: fromRow)) || walls.contains(Wall(type: "vertical", col: fromCol, row: fromRow - 1)) {
+            possibleMoves.remove(Pawn(col: fromCol + 1, row: fromRow, imageName: pieceMoved.imageName))
+            
+        }
+        if walls.contains(Wall(type: "vertical", col: fromCol - 1, row: fromRow)) || walls.contains(Wall(type: "vertical", col: fromCol - 1, row: fromRow - 1)){
+            possibleMoves.remove(Pawn(col: fromCol - 1, row: fromRow, imageName: pieceMoved.imageName))
+        }
 
         if (possibleMoves.contains(pieceMoved)){
             
