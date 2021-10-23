@@ -23,19 +23,51 @@ struct QuoridorEngine{
         pieceMoved.col = toCol
         pieceMoved.row = toRow
         
+        
+        if walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow - 1)) || walls.contains(Wall(type: "horizontal", col: fromCol - 1, row: fromRow - 1)){
+            possibleMoves.remove(Pawn(col: fromCol, row: fromRow - 1, imageName: pieceMoved.imageName))
+        }
+        else if pawns.contains(Pawn(col: fromCol, row: fromRow - 1, imageName: "Pawn-black")) || pawns.contains(Pawn(col: fromCol, row: fromRow - 1, imageName: "Pawn-white")) {
+            possibleMoves.remove(Pawn(col: fromCol, row: fromRow - 1, imageName: pieceMoved.imageName))
+            if !walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow - 2)){
+                possibleMoves.insert(Pawn(col: fromCol, row: fromRow - 2, imageName: pieceMoved.imageName))
+            }
+        }
+        
         if walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow)) || walls.contains(Wall(type: "horizontal", col: fromCol - 1, row: fromRow)){
             possibleMoves.remove(Pawn(col: fromCol, row: fromRow + 1, imageName: pieceMoved.imageName))
         }
-        if walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow - 1)) || walls.contains(Wall(type: "horizontal", col: fromCol - 1, row: fromRow - 1)) {
-            possibleMoves.remove(Pawn(col: fromCol,row: fromRow - 1 , imageName: pieceMoved.imageName))
+        else if pawns.contains(Pawn(col: fromCol, row: fromRow + 1, imageName: "Pawn-black")) || pawns.contains(Pawn(col: fromCol, row: fromRow + 1, imageName: "Pawn-white")) {
+            possibleMoves.remove(Pawn(col: fromCol, row: fromRow + 1, imageName: pieceMoved.imageName))
+            if !walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow + 1)){
+                possibleMoves.insert(Pawn(col: fromCol, row: fromRow + 2, imageName: pieceMoved.imageName))
+            }
         }
-        if walls.contains(Wall(type: "vertical", col: fromCol, row: fromRow)) || walls.contains(Wall(type: "vertical", col: fromCol, row: fromRow - 1)) {
+        
+        if walls.contains(Wall(type: "vertical", col: fromCol, row: fromRow)) || walls.contains(Wall(type: "vertical", col: fromCol, row: fromRow - 1)){
             possibleMoves.remove(Pawn(col: fromCol + 1, row: fromRow, imageName: pieceMoved.imageName))
-            
         }
+        else if pawns.contains(Pawn(col: fromCol + 1, row: fromRow, imageName: "Pawn-black")) || pawns.contains(Pawn(col: fromCol + 1, row: fromRow, imageName: "Pawn-white")) {
+            possibleMoves.remove(Pawn(col: fromCol + 1, row: fromRow, imageName: pieceMoved.imageName))
+            if !walls.contains(Wall(type: "vertical", col: fromCol + 1, row: fromRow)){
+                print("hey")
+                possibleMoves.insert(Pawn(col: fromCol + 2, row: fromRow, imageName: pieceMoved.imageName))
+            }
+        }
+        
         if walls.contains(Wall(type: "vertical", col: fromCol - 1, row: fromRow)) || walls.contains(Wall(type: "vertical", col: fromCol - 1, row: fromRow - 1)){
             possibleMoves.remove(Pawn(col: fromCol - 1, row: fromRow, imageName: pieceMoved.imageName))
         }
+        else if pawns.contains(Pawn(col: fromCol - 1, row: fromRow, imageName: "Pawn-black")) || pawns.contains(Pawn(col: fromCol - 1, row: fromRow, imageName: "Pawn-white")) {
+            possibleMoves.remove(Pawn(col: fromCol - 1, row: fromRow, imageName: pieceMoved.imageName))
+            if !walls.contains(Wall(type: "vertical", col: fromCol - 2, row: fromRow)){
+                print("hey")
+                possibleMoves.insert(Pawn(col: fromCol - 2, row: fromRow, imageName: pieceMoved.imageName))
+            }
+        }
+        
+        
+        
 
         if (possibleMoves.contains(pieceMoved)){
             
