@@ -114,7 +114,6 @@ struct QuoridorEngine{
     // to the right
         if(pawns.contains(Pawn(col: fromCol + 1, row: fromRow, imageName: "Pawn-black")) || pawns.contains(Pawn(col: fromCol + 1, row: fromRow, imageName: "Pawn-white"))) && (walls.contains(Wall(type: "vertical", col: fromCol + 1, row: fromRow)) || walls.contains(Wall(type: "vertical", col: fromCol + 1, row: fromRow - 1))){
             
-            
             if (walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow - 1)) || walls.contains(Wall(type: "horizontal", col: fromCol + 1, row: fromRow - 1))) && !walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow)) && !walls.contains(Wall(type: "horizontal", col: fromCol + 1, row: fromRow)){
                 possibleMoves.insert(Pawn(col: fromCol + 1, row: fromRow + 1, imageName: pieceMoved.imageName))
             }
@@ -127,9 +126,6 @@ struct QuoridorEngine{
                 possibleMoves.insert(Pawn(col: fromCol + 1, row: fromRow - 1, imageName: pieceMoved.imageName))
             }
         }
-        
-        
-       
         
         
         if (possibleMoves.contains(pieceMoved)){
@@ -197,9 +193,8 @@ struct QuoridorEngine{
         pawns.insert(Pawn(col: 4, row: 0, imageName: "Pawn-black"))
         pawns.insert(Pawn(col: 4, row: 8, imageName: "Pawn-white"))
         
-        
-
     }
+    
     
     
 }

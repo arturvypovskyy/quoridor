@@ -22,6 +22,16 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWv-jB-b5s" customClass="BoardView" customModule="Quoridor" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="984" height="1312"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdw-wM-wyG">
+                                        <rect key="frame" x="77" y="811" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="loop_icon"/>
+                                        <connections>
+                                            <action selector="buttonRestartAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VS2-sm-wqx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AWv-jB-b5s" secondAttribute="height" multiplier="3:4" id="26J-OG-GO7"/>
@@ -38,6 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="boardView" destination="AWv-jB-b5s" id="gr8-EU-U1H"/>
+                        <outlet property="buttonRestart" destination="kdw-wM-wyG" id="gmB-xR-5Ue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -45,4 +56,7 @@
             <point key="canvasLocation" x="115.42968749999999" y="113.76281112737919"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="loop_icon" width="1716" height="1716"/>
+    </resources>
 </document>

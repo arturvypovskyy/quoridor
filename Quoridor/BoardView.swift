@@ -11,9 +11,9 @@ import UIKit
 class BoardView: UIView {
     
     let ratio: CGFloat = 0.9
-    var originX: CGFloat = 15
-    var originY: CGFloat = 15
-    var cellSide: CGFloat = 15
+    var originX: CGFloat = -15
+    var originY: CGFloat = -15
+    var cellSide: CGFloat = -15
     let space: CGFloat = 20
     var fromRow = -10
     var fromCol = -10
@@ -38,6 +38,7 @@ class BoardView: UIView {
         drawBoard()
         drawPieces()
         drawWalls()
+
         
     }
     
@@ -147,5 +148,13 @@ class BoardView: UIView {
     
         
     }
+    
+    
+//    func drawButtonLoop(button: UIButton){
+//        button.frame = CGRect(x: originX, y: originY + (cellSide + space) * 9, width: cellSide, height: cellSide)
+//        button.setImage(UIImage(named: "loop_icon"), for: .normal)
+//    }
 
+    
+    
 }

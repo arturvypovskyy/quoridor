@@ -14,6 +14,8 @@ class ViewController: UIViewController, QuoridorDelegate {
     
     @IBOutlet weak var boardView: BoardView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,9 +24,17 @@ class ViewController: UIViewController, QuoridorDelegate {
         quoridorEngine.initializerGame()
         boardView.shadowPieces = quoridorEngine.pawns
         boardView.shadowWalls = quoridorEngine.walls
-        
-        
     }
+    
+    @IBOutlet weak var buttonRestart: UIButton!
+    
+     
+    @IBAction func buttonRestartAction(_ sender: UIButton) {
+        quoridorEngine.initializerGame()
+        boardView.shadowPieces = quoridorEngine.pawns
+        boardView.shadowWalls = quoridorEngine.walls
+        boardView.setNeedsDisplay()
+     }
     
     func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int) {
         
@@ -38,6 +48,13 @@ class ViewController: UIViewController, QuoridorDelegate {
         boardView.shadowWalls = quoridorEngine.walls
         boardView.setNeedsDisplay()
     }
+    
+//    func restartGame(){
+//        quoridorEngine.initializerGame()
+//        boardView.shadowPieces = quoridorEngine.pawns
+//        boardView.shadowWalls = quoridorEngine.walls
+//        boardView.setNeedsDisplay()
+//    }
 
     
     
