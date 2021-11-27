@@ -12,16 +12,43 @@ struct QuoridorEngine{
     
     var pawns = Set<Pawn>()
     var walls = Set<Wall>()
+    var firstPlayer: Player = Player(imageName: "Pawn-white", wallsLeft: 10)
+    var secondPlayer: Player = Player(imageName: "Pawn-black", wallsLeft: 10)
+    var currentPlayer: Player = Player(imageName: "Pawn-white", wallsLeft: 10)
+    
+    mutating func changePlayer(){
+        if currentPlayer.imageName == "Pawn-white"{
+            firstPlayer = currentPlayer
+            currentPlayer = secondPlayer
+        }
+        else{
+            secondPlayer = currentPlayer
+            currentPlayer = firstPlayer
+        }
+    
+    }
+    
     
     mutating func movePiece(fromCol: Int, fromRow: Int, toCol: Int, toRow: Int){
         guard var pieceMoved = pieceAt(col: fromCol, row: fromRow) else { return  }
+        
         var possibleMoves = Set<Pawn>()
+        
         possibleMoves.insert(Pawn(col: fromCol + 1, row: fromRow, imageName: pieceMoved.imageName))
         possibleMoves.insert(Pawn(col: fromCol - 1, row: fromRow, imageName: pieceMoved.imageName))
         possibleMoves.insert(Pawn(col: fromCol, row: fromRow + 1, imageName: pieceMoved.imageName))
         possibleMoves.insert(Pawn(col: fromCol, row: fromRow - 1, imageName: pieceMoved.imageName))
         pieceMoved.col = toCol
         pieceMoved.row = toRow
+        
+        
+        //changing player, removing forbidden moves
+        for possibleMove in possibleMoves {
+            if possibleMove.imageName != currentPlayer.imageName{
+                possibleMoves.remove(possibleMove)
+            }
+        }
+
         
         
         if walls.contains(Wall(type: "horizontal", col: fromCol, row: fromRow - 1)) || walls.contains(Wall(type: "horizontal", col: fromCol - 1, row: fromRow - 1)){
@@ -136,10 +163,13 @@ struct QuoridorEngine{
             pieceMoved.col = toCol
             pieceMoved.row = toRow
             pawns.insert(pieceMoved)
+            
+            changePlayer()
         }
         else{
             print("Move is forbidden")
         }
+        
 
     }
     

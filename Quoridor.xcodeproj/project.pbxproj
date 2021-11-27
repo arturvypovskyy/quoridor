@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		750D38102714F50700152DE9 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D380F2714F50700152DE9 /* Wall.swift */; };
 		7518B2A32713A1850030F49F /* QuoridorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518B2A22713A1850030F49F /* QuoridorDelegate.swift */; };
+		7548197B2752B1040009BFD8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548197A2752B1040009BFD8 /* Player.swift */; };
 		7578F56B270F0A98007FA9E1 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578F56A270F0A98007FA9E1 /* BoardView.swift */; };
 		7578F573270F6ADF007FA9E1 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578F572270F6ADF007FA9E1 /* Pawn.swift */; };
 		7578F575270F6B5E007FA9E1 /* QuoridorEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7578F574270F6B5E007FA9E1 /* QuoridorEngine.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		750D380F2714F50700152DE9 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		7518B2A22713A1850030F49F /* QuoridorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoridorDelegate.swift; sourceTree = "<group>"; };
+		7548197A2752B1040009BFD8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7578F56A270F0A98007FA9E1 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		7578F572270F6ADF007FA9E1 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		7578F574270F6B5E007FA9E1 /* QuoridorEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoridorEngine.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				7578F572270F6ADF007FA9E1 /* Pawn.swift */,
 				750D380F2714F50700152DE9 /* Wall.swift */,
 				7578F574270F6B5E007FA9E1 /* QuoridorEngine.swift */,
+				7548197A2752B1040009BFD8 /* Player.swift */,
 				75D5B25D270DEB08006D3EB4 /* Main.storyboard */,
 				75D5B260270DEB0A006D3EB4 /* Assets.xcassets */,
 				75D5B262270DEB0A006D3EB4 /* LaunchScreen.storyboard */,
@@ -160,6 +163,7 @@
 				75D5B258270DEB08006D3EB4 /* AppDelegate.swift in Sources */,
 				750D38102714F50700152DE9 /* Wall.swift in Sources */,
 				7578F573270F6ADF007FA9E1 /* Pawn.swift in Sources */,
+				7548197B2752B1040009BFD8 /* Player.swift in Sources */,
 				75D5B25A270DEB08006D3EB4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
