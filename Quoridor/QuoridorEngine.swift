@@ -204,15 +204,31 @@ struct QuoridorEngine{
                 
                 if (!(walls.isDisjoint(with: candidates))){
                     print("Same found")
+
                 }
                 else{
                     let wallSet = Wall(type: type, col: toCol, row: toRow)
                     walls.insert(wallSet)
+                    
+                    //counting set walls
+                    if wallSet.type != "" {
+                        currentPlayer.wallsLeft -= 1
+                        print("\(currentPlayer.imageName) walls left \(currentPlayer.wallsLeft)")
+                    }
+                    changePlayer()
+
                 }
             }
             else{
                 let wallSet = Wall(type: type, col: toCol, row: toRow)
                 walls.insert(wallSet)
+                
+                //counting set walls
+                if wallSet.type != "" {
+                    currentPlayer.wallsLeft -= 1
+                    print("\(currentPlayer.imageName) walls left \(currentPlayer.wallsLeft)")
+                }
+                changePlayer()
             }
         }
     }

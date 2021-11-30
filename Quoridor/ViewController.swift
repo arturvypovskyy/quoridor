@@ -49,12 +49,7 @@ class ViewController: UIViewController, QuoridorDelegate {
         boardView.setNeedsDisplay()
     }
     
-//    func restartGame(){
-//        quoridorEngine.initializerGame()
-//        boardView.shadowPieces = quoridorEngine.pawns
-//        boardView.shadowWalls = quoridorEngine.walls
-//        boardView.setNeedsDisplay()
-//    }
+
 
     
     
