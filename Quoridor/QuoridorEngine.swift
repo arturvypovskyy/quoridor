@@ -78,7 +78,7 @@ struct QuoridorEngine{
             else if pawns.contains(Pawn(col: fromCol + 1, row: fromRow, imageName: "Pawn-black")) || pawns.contains(Pawn(col: fromCol + 1, row: fromRow, imageName: "Pawn-white")) {
                 possibleMoves.remove(Pawn(col: fromCol + 1, row: fromRow, imageName: pieceMoved.imageName))
                 if !walls.contains(Wall(type: "vertical", col: fromCol + 1, row: fromRow)){
-            
+                    
                     possibleMoves.insert(Pawn(col: fromCol + 2, row: fromRow, imageName: pieceMoved.imageName))
                 }
             }
@@ -151,6 +151,7 @@ struct QuoridorEngine{
                     possibleMoves.insert(Pawn(col: fromCol + 1, row: fromRow + 1, imageName: pieceMoved.imageName))
                     possibleMoves.insert(Pawn(col: fromCol + 1, row: fromRow - 1, imageName: pieceMoved.imageName))
                 }
+                
             }
             
             
@@ -162,10 +163,10 @@ struct QuoridorEngine{
                 pieceMoved.col = toCol
                 pieceMoved.row = toRow
                 pawns.insert(pieceMoved)
-                possibleMovesComp = possibleMoves
+                //ComputerPlayerLogic(possibleMoves: possibleMoves)
                 changePlayer()
             }
-            else{
+            else {
                 print("Move is forbidden")
             }
         }
@@ -205,9 +206,9 @@ struct QuoridorEngine{
                     }
                     else{
                         let wallSet = Wall(type: type, col: toCol, row: toRow)
-                        walls.insert(wallSet)
                         //counting set walls
                         if wallSet.type != "" {
+                            walls.insert(wallSet)
                             currentPlayer.wallsLeft -= 1
                             print("\(currentPlayer.imageName) walls left \(currentPlayer.wallsLeft)")
                             changePlayer()
@@ -218,13 +219,13 @@ struct QuoridorEngine{
                 }
                 else{
                     let wallSet = Wall(type: type, col: toCol, row: toRow)
-                    walls.insert(wallSet)
                     //counting set walls
                     if wallSet.type != "" {
+                        walls.insert(wallSet)
                         currentPlayer.wallsLeft -= 1
                         print("\(currentPlayer.imageName) walls left \(currentPlayer.wallsLeft)")
                         changePlayer()
-                       // ComputerPlayerLogic(name: "Pawn-black", possibleMoves: Set<Pawn>(), candidates: candidatesSet)
+                        // ComputerPlayerLogic(name: "Pawn-black", possibleMoves: Set<Pawn>(), candidates: candidatesSet)
                     }
                 }
             }
@@ -255,13 +256,15 @@ struct QuoridorEngine{
         return false
     }
     
-    mutating func ComputerPlayerLogic( possibleMoves: Set<Pawn>)
+    mutating func ComputerPlayerLogic(possibleMoves: Set<Pawn>)
     {
-        for pawn in pawns{
-            if pawn.imageName == "Pawn-black"{
-                for possibleMove in possibleMoves {
-                    if possibleMove.imageName == "Pawn-black"{
-                        movePiece(fromCol: pawn.col, fromRow: pawn.row, toCol: possibleMove.col, toRow: possibleMove.row)
+        if currentPlayer.imageName == "Pawn-black"{
+            for pawn in pawns{
+                if pawn.imageName == "Pawn-black"{
+                    for possibleMove in possibleMoves {
+                        if possibleMove.imageName == "Pawn-black"{
+                            movePiece(fromCol: pawn.col, fromRow: pawn.row, toCol: possibleMove.col, toRow: possibleMove.row)
+                        }
                     }
                 }
             }
